@@ -14,6 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::resource("agendas", "ApiAgendaController");
+Route::resource("alunos", "ApiAlunoController");
+Route::resource("anamneses", "ApiAnamneseController");
+Route::resource("posts", "ApiPostController");
+Route::resource("turmas", "ApiTurmaController");
+Route::resource("exercicios", "ApiExerciciosController");
+
+Route::get("autenticar/{email}/{senha}", "ApiAuthAlunoController@autenticar");
+Route::get("proximoseventos", "ApiAuthAlunoController@proximoseventos");
+Route::get("entrarnaturma/{idaluno}/{codigodeacesso}", "ApiAuthAlunoController@entrarnaturma");
+Route::get("sairdaturma/{idaluno}", "ApiAuthAlunoController@sairdaturma");
+Route::get("listaralunosdaturma/{idturma}", "ApiAuthAlunoController@listaralunosTurma");
+Route::get("exerciciosporturma/{idturma}", "ApiAuthAlunoController@exerciciosporturma");
+
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

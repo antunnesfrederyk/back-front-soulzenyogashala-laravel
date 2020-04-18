@@ -14,9 +14,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource("agendas", "FrontAgendaController");
+    Route::resource("alunos", "FrontAlunoController");
+    Route::resource("anamneses", "FrontAnamneseController");
+    Route::resource("posts", "FrontPostController");
+    Route::resource("turmas", "FrontTurmaController");
+    Route::resource("exercicios", "FrontExerciciosController");
+    Route::post('inseriremturma', 'FrontOperacoesController@inseriremturma')->name('inseriremturma');
+    Route::get('removerdaturma/{id}', 'FrontOperacoesController@removerdaturma')->name('removerdaturma');
+});
