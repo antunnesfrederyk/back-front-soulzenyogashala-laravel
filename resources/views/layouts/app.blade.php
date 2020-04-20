@@ -50,8 +50,8 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-            <div class="sidebar-brand-text mx-3">Soul Zen Yoga Shala</div>
+        <a class="sidebar-brand d-flex align-items-center justify-content-center bg-white" href="#">
+            <div class="sidebar-brand-text mx-3"><img src="http://soulzenyogashala.com.br/logo.png" height="40px"></div>
         </a>
 
         <!-- Divider -->
@@ -59,7 +59,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{route('home')}}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Página Inicial</span></a>
         </li>
@@ -96,25 +96,8 @@
             <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Menu de Agenda:</h6>
-                    <a class="collapse-item" href="utilities-color.html">Próximos Eventos</a>
-                    <a class="collapse-item" href="utilities-border.html">Todos os Eventos</a>
-                </div>
-            </div>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities2" aria-expanded="true" aria-controls="collapseUtilities2">
-                <i class="fas fa-layer-group"></i>
-                <span>Turmas</span>
-            </a>
-            <div id="collapseUtilities2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Menu de Turma:</h6>
-                    <a class="collapse-item" href="utilities-color.html">Listar Turmas</a>
-                    <a class="collapse-item" href="utilities-border.html">Adicionar Aluno</a>
-                    <a class="collapse-item" href="utilities-animation.html">Remover Aluno</a>
-                    <a class="collapse-item" href="utilities-animation.html">Adicionar Exercícios</a>
-                    <a class="collapse-item" href="utilities-animation.html">Remover Exercícios</a>
+                    <a class="collapse-item" href="{{route('agendas.index')}}">Todos os Eventos</a>
+                    <a class="collapse-item" href="{{route('agendas.show', 0)}}">Próximos Eventos</a>
                 </div>
             </div>
         </li>
@@ -127,7 +110,7 @@
             <div id="collapseUtilities3" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Menu de Exercícios:</h6>
-                    <a class="collapse-item" href="utilities-color.html">Listar Exercícios</a>
+                    <a class="collapse-item">Listar Exercícios</a>
                 </div>
             </div>
         </li>
@@ -143,8 +126,15 @@
         <!-- Nav Item - Pages Collapse Menu -->
 
         <!-- Nav Item - Tables -->
+
         <li class="nav-item">
-            <a class="nav-link" href="tables.html">
+            <a class="nav-link disabled" href="">
+                <i class="fas fa-layer-group"></i>
+                <span>Turmas</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('post.index')}}">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Feed de Notícias</span></a>
         </li>
@@ -214,7 +204,8 @@
                         <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-bell fa-fw"></i>
                             <!-- Counter - Alerts -->
-                            <span class="badge badge-danger badge-counter">3+</span>
+                            <span class="badge badge-danger badge-counter"></span>
+{{--                            <span class="badge badge-danger badge-counter">3+</span>--}}
                         </a>
                         <!-- Dropdown - Alerts -->
                         <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
@@ -263,7 +254,8 @@
                         <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-envelope fa-fw"></i>
                             <!-- Counter - Messages -->
-                            <span class="badge badge-danger badge-counter">7</span>
+                            <span class="badge badge-danger badge-counter"></span>
+{{--                            <span class="badge badge-danger badge-counter">7</span>--}}
                         </a>
                         <!-- Dropdown - Messages -->
                         <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
@@ -325,17 +317,13 @@
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="{{route('register')}}">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Perfil
+                                Novo Usuário
                             </a>
                             <a class="dropdown-item" href="#">
                                 <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Settings
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Activity Log
+                                Perfil
                             </a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">

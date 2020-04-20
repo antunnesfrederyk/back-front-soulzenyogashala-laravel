@@ -24,7 +24,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource("agendas", "FrontAgendaController");
     Route::resource("alunos", "FrontAlunoController");
     Route::resource("anamneses", "FrontAnamneseController");
-    Route::resource("posts", "FrontPostController");
+    Route::resource("post", "FrontPostController");
     Route::resource("turmas", "FrontTurmaController");
     Route::resource("exercicios", "FrontExerciciosController");
     Route::post('inseriremturma', 'FrontOperacoesController@inseriremturma')->name('inseriremturma');

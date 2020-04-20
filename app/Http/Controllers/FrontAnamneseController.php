@@ -51,7 +51,8 @@ class FrontAnamneseController extends Controller
      */
     public function show($id)
     {
-        //
+        $dado = AnamneseModel::findOrFail($id);
+        return view('admin.anamnese.view', compact('dado'));
     }
 
     /**
@@ -70,21 +71,27 @@ class FrontAnamneseController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
     {
-        //
+        $anamnese = AnamneseModel::findOrFail($id);
+        $anamnese->update($request->all());
+        flash('Anamnese Atualizada com Sucesso')->success();
+        return redirect()->route('anamneses.show', $id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        //
+        $anamnase = AnamneseModel::findOrFail($id);
+        $anamnase->delete();
+        flash('Anamnese Excluída com Sucesso')->success();
+        return  redirect()->route('anamneses.index');
     }
 }
