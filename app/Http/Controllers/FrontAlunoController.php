@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\AlunosModel;
+use App\TurmaModel;
 use Illuminate\Http\Request;
 
 class FrontAlunoController extends Controller
@@ -36,7 +37,7 @@ class FrontAlunoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**

@@ -97,6 +97,6 @@ class FrontPostController extends Controller
         $post = PostModel::findOrFail($id);
         $post->delete();
         flash('Post Excluído com Sucesso')->success();
-        return  redirect()->route('posts.index');
+        return  redirect()->route('post.index');
     }
 }

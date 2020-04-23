@@ -29,11 +29,11 @@ class ApiAuthAlunoController extends Controller
     }
 
     public function entrarnaturma($idaluno, $codigodeacesso){
-        $turma = TurmaModel::all()->where('codigodeacesso', $codigodeacesso);
-        $aluno = AlunosModel::all()->where('id', $idaluno);
+        $turma = TurmaModel::all()->where('codigodeacesso', $codigodeacesso)->get(0);
+        $aluno = AlunosModel::all()->where('id', $idaluno)->get(0);
         $aluno->turma = $turma->id;
         $aluno->save();
-        return $aluno;
+        return $turma;
     }
 
     public function sairdaturma($idaluno){

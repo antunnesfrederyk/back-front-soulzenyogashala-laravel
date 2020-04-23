@@ -128,7 +128,7 @@
         <!-- Nav Item - Tables -->
 
         <li class="nav-item">
-            <a class="nav-link disabled" href="">
+            <a class="nav-link disabled" href="{{route('turmas.index')}}">
                 <i class="fas fa-layer-group"></i>
                 <span>Turmas</span></a>
         </li>
