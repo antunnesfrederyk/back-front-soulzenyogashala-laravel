@@ -20,6 +20,7 @@ class CreateExercicioTable extends Migration
             $table->string('duracao')->nullable();
             $table->string('imagem')->nullable();
             $table->string('titulo')->nullable();
+            $table->boolean('is_free')->default(false);
             $table->bigInteger('id_user')->unsigned();
             $table->foreign('id_user')->references('id')->on('users')->cascadeOnDelete();
             $table->timestamps();

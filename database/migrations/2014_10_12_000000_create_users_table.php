@@ -22,6 +22,14 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        \Illuminate\Support\Facades\DB::table('users')->insert(
+            array(
+                'name' => 'Frederyk Antunnes',
+                'email' => 'frederykantunnes@gmail.com',
+                'password' => '$2y$10$P1lCcPSCjHWDhszrP2b0MuXH.oRRSlE6kiuMmz7pbAv89c3BlWol.',
+            )
+        );
     }
 
     /**
