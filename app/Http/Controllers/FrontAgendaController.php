@@ -41,7 +41,7 @@ class FrontAgendaController extends Controller
         $agenda = new AgendaModel($request->all());
         $agenda->save();
         flash('Evento criado com sucesso!')->success();
-        return redirect()->route('agendas.index');
+        return redirect()->route('agenda.index');
     }
 
     /**
@@ -72,27 +72,27 @@ class FrontAgendaController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
     {
         $agenda = AgendaModel::findOrFail($id);
         $agenda->update($request->all());
         flash('Evento atualizado com sucesso')->success();
-        return redirect()->route('agendas.index', $id);
+        return redirect()->route('agenda.index', $id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
         $agenda = AgendaModel::findOrFail($id);
         $agenda->delete();
         flash('Evento excluído com sucesso')->success();
-        return  redirect()->route('agendas.index');
+        return  redirect()->route('agenda.index');
     }
 }

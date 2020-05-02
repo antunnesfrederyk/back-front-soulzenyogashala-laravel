@@ -13,7 +13,7 @@
                 <!-- Card Content - Collapse -->
                 <div class="collapse" id="collapseCardExample">
                     <div class="card-body p-4">
-                        <form method="post" action="{{route('agendas.store')}}" enctype="multipart/form-data">
+                        <form method="post" action="{{route('agenda.store')}}" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="id_user" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
                             <div class="row">
@@ -87,7 +87,7 @@
                                     <td align="center">
 
                                         @if($dado->data >= \Carbon\Carbon::now())
-                                        <form action="{{route('agendas.destroy', $dado->id)}}" method="post">
+                                        <form action="{{route('agenda.destroy', $dado->id)}}" method="post">
                                             @csrf
                                             <input name="_method" value="delete" type="hidden">
                                             <button  class="btn btn btn-danger"><i class="fas fa-fw fa-trash"></i></button>

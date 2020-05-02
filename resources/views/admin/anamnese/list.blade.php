@@ -14,7 +14,7 @@
                 <!-- Card Content - Collapse -->
                 <div class="collapse" id="collapseCardExample">
                     <div class="card-body p-4">
-                        <form method="post" action="{{route('anamneses.store')}}" enctype="multipart/form-data">
+                        <form method="post" action="{{route('anamnese.store')}}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="form-group col-md-6 col-12">
@@ -244,10 +244,10 @@
                                         @endforeach
                                     </td>
                                     <td>
-                                        <a class="btn btn-primary" href="{{route('anamneses.show',$dado->id)}}">Visualizar Anamnese</a>
+                                        <a class="btn btn-primary" href="{{route('anamnese.show',$dado->id)}}">Visualizar Anamnese</a>
                                     </td>
                                     <td align="center">
-                                        <form action="{{route('anamneses.destroy', $dado->id)}}" method="post">
+                                        <form action="{{route('anamnese.destroy', $dado->id)}}" method="post">
                                             @csrf
                                             <input name="_method" value="delete" type="hidden">
                                             <button  class="btn btn btn-danger"><i class="fas fa-fw fa-trash"></i></button>

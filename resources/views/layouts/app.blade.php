@@ -50,26 +50,19 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center bg-white" href="#">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center bg-white" href="{{route('home')}}">
             <div class="sidebar-brand-text mx-3"><img src="http://soulzenyogashala.com.br/logo.png" height="40px"></div>
         </a>
 
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
 
-        <!-- Nav Item - Dashboard -->
-        <li class="nav-item">
-            <a class="nav-link" href="{{route('home')}}">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Página Inicial</span></a>
-        </li>
-
         <!-- Divider -->
         <hr class="sidebar-divider">
 
         <!-- Heading -->
         <div class="sidebar-heading">
-            Interface
+            Cadastros
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
@@ -81,8 +74,8 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Menu de Alunos:</h6>
-                    <a class="collapse-item" href="{{route('alunos.index')}}">Lista de Alunos</a>
-                    <a class="collapse-item" href="{{route('anamneses.index')}}">Anamnese</a>
+                    <a class="collapse-item" href="{{route('aluno.index')}}">Lista de Alunos</a>
+                    <a class="collapse-item" href="{{route('anamnese.index')}}">Anamnese</a>
                 </div>
             </div>
         </li>
@@ -96,8 +89,8 @@
             <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Menu de Agenda:</h6>
-                    <a class="collapse-item" href="{{route('agendas.index')}}">Todos os Eventos</a>
-                    <a class="collapse-item" href="{{route('agendas.show', 0)}}">Próximos Eventos</a>
+                    <a class="collapse-item" href="{{route('agenda.index')}}">Todos os Eventos</a>
+                    <a class="collapse-item" href="{{route('agenda.show', 0)}}">Próximos Eventos</a>
                 </div>
             </div>
         </li>
@@ -115,13 +108,7 @@
             </div>
         </li>
 
-        <!-- Divider -->
-        <hr class="sidebar-divider">
 
-        <!-- Heading -->
-        <div class="sidebar-heading">
-            Addons
-        </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
 

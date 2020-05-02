@@ -21,12 +21,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => ['auth']], function () {
-    Route::resource("agendas", "FrontAgendaController");
-    Route::resource("alunos", "FrontAlunoController");
-    Route::resource("anamneses", "FrontAnamneseController");
+    Route::resource("agenda", "FrontAgendaController");
+    Route::resource("aluno", "FrontAlunoController");
+    Route::resource("anamnese", "FrontAnamneseController");
     Route::resource("post", "FrontPostController");
     Route::resource("turma", "FrontTurmaController");
     Route::resource("exercicio", "FrontExerciciosController");
     Route::post('inseriremturma', 'FrontOperacoesController@inseriremturma')->name('inseriremturma');
     Route::get('removerdaturma/{id}', 'FrontOperacoesController@removerdaturma')->name('removerdaturma');
+    Route::post('inserirexercicioemturma', 'FrontOperacoesController@inserirexercicioemturma')->name('inserirexercicioemturma');
+    Route::get('removerexerciciodaturma/{id}', 'FrontOperacoesController@removerexerciciodaturma')->name('removerexerciciodaturma');
 });

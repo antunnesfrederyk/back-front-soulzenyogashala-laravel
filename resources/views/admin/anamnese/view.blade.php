@@ -15,7 +15,7 @@
                 <!-- Card Content - Collapse -->
                 <div class="collapse show" id="collapseCardExample">
                     <div class="card-body p-4">
-                        <form method="post" action="{{route('anamneses.update', $dado->id)}}" enctype="multipart/form-data">
+                        <form method="post" action="{{route('anamnese.update', $dado->id)}}" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="id_aluno" value="{{$dado->id_aluno}}">
                             <input type="hidden" name="_method" value="put">

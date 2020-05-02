@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ExercicioModel;
 use App\TurmaModel;
 use Illuminate\Http\Request;
 
@@ -46,11 +47,13 @@ class FrontTurmaController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
     {
-        //
+        $dado = TurmaModel::findOrFail($id);
+        $exercicios = ExercicioModel::all();
+        return view('admin.turmas.view', compact('dado'), compact('exercicios'));
     }
 
     /**

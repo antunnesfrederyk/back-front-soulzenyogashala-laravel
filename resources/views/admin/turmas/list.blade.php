@@ -67,10 +67,13 @@
                                         {{$dado->descricao}}
                                     </td>
                                     <td align="center">
-                                        <span style="font-size: 18px;color: forestgreen">{{$dado->codigodeacesso}}</span><br>
+                                        <span style="font-size: 18px;color: forestgreen">
+                                            {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::size(80)->generate($dado->codigodeacesso); !!}
+                                            {{$dado->codigodeacesso}}
+                                        </span><br>
                                     </td>
                                     <td align="center">
-                                        <a class="btn btn-primary" href="#">Administrar Turma</a>
+                                        <a class="btn btn-primary" href="{{route('turma.show', $dado->id)}}">Administrar Turma</a>
                                     </td>
                                     <td align="center">
                                         <form action="{{route('turma.destroy', $dado->id)}}" method="post">
