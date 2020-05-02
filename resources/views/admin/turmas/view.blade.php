@@ -29,90 +29,87 @@
                         <div class="col-12">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Accordion -->
-                                <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                                    <h6 class="m-0 font-weight-bold text-primary">Horários das Aulas</h6>
+                                <a href="#collapseCardExample" class="d-block card-header py-3 bg-primary" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                                    <h6 class="m-0 font-weight-bold text-white">Horários das Aulas</h6>
                                 </a>
                                 <!-- Card Content - Collapse -->
                                 <div class="collapse" id="collapseCardExample">
                                     <div class="card-body p-4">
                                         <div class="row">
                                             <div class="col-5">
-                                                <label>Adicionar</label>
-                                                <div class="card p-2">
-                                                    <label class="mb-0">Titulo</label>
-                                                    <input class="form-control">
-                                                    <div class="row">
-                                                        <div class="col-5 mt-1 mb-1">
-                                                            <label class="mb-0">Dia</label>
-                                                            <select class="form-control">
-                                                                <option value="Domingo">Domingo</option>
-                                                                <option value="Segunda">Segunda</option>
-                                                                <option value="Terça">Terça</option>
-                                                                <option value="Quarta">Quarta</option>
-                                                                <option value="Quinta">Quinta</option>
-                                                                <option value="Sexta">Sexta</option>
-                                                                <option value="Sabado">Sabado</option>
-                                                            </select>
+                                                <form action="{{route('aula.store')}}" method="post">
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            Adicionar Aula
                                                         </div>
-                                                        <div class="col-7">
-                                                            <label class="mb-0">Horario</label>
-                                                            <input class="form-control">
+                                                        <div class="card-body">
+                                                            @csrf
+                                                            <input type="hidden" name="id_turma" value="{{$dado->id}}">
+                                                            <label>Adicionar</label>
+                                                            <label class="mb-0">Titulo</label>
+                                                            <input class="form-control" type="text" name="titulo" placeholder="Ex: Aula Treino 1" required>
+                                                            <div class="row">
+                                                                <div class="col-5 mt-1 mb-1">
+                                                                    <label class="mb-0">Dia</label>
+                                                                    <select class="form-control" name="dia_semana"  required>
+                                                                        <option value="Domingo">Domingo</option>
+                                                                        <option value="Segunda">Segunda</option>
+                                                                        <option value="Terça">Terça</option>
+                                                                        <option value="Quarta">Quarta</option>
+                                                                        <option value="Quinta">Quinta</option>
+                                                                        <option value="Sexta">Sexta</option>
+                                                                        <option value="Sabado">Sabado</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-7">
+                                                                    <label class="mb-0">Horario</label>
+                                                                    <input class="form-control" type="text" placeholder="Ex: 14:00hs às 16:00hs" name="hora_inicio_fim" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-9">
+                                                                    <label class="mb-0">Professor</label>
+                                                                    <input class="form-control" type="text" placeholder="Ex: Jose da Silva" name="professor" required>
+                                                                </div>
+                                                                <div class="col-3">
+                                                                    <button type="submit" class="btn btn-success w-100 mt-4"><i class="fa fa-save"></i></button>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-10">
-                                                            <label class="mb-0">Professor</label>
-                                                            <input class="form-control">
-                                                        </div>
-                                                        <div class="col-2">
-                                                            <button class="btn btn-success w-100 mt-4">+</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                </form>
                                             </div>
+
                                             <div class="col-7">
                                                 <label>Lista de Horarios Cadastrados</label>
-                                                <div class="card p-2">
-                                                    <table class="table-bordered w-100">
-                                                        <thead>
-                                                        <tr>
-                                                            <td>Dia</td>
-                                                            <td>Titulo</td>
-                                                            <td>Horário</td>
-                                                            <td>Professor</td>
-                                                            <td></td>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        <tr>
-                                                            <td>Segunda</td>
-                                                            <td>Aulas Aquecimento</td>
-                                                            <td>14:00 - 16:00</td>
-                                                            <td>Jose da Silva</td>
-                                                            <td>
-                                                                <a href="#" class="btn-sm btn-danger p-0 m-1 pl-1 pr-1">x</a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Quarta</td>
-                                                            <td>Aulas 1</td>
-                                                            <td>14:00 - 16:00</td>
-                                                            <td>Maria da Silva</td>
-                                                            <td>
-                                                                <a href="#" class="btn-sm btn-danger p-0 m-1 pl-1 pr-1">x</a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Sexta</td>
-                                                            <td>Aulas 3</td>
-                                                            <td>14:00 - 16:00</td>
-                                                            <td>Joao da Silva</td>
-                                                            <td>
-                                                                <a href="#" class="btn-sm btn-danger p-0 m-1 pl-1 pr-1">x</a>
-                                                            </td>                                                    </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                                                <table class="table table-bordered w-100" style="font-size: 12px">
+                                                    <thead>
+                                                    <tr>
+                                                        <td class="p-1">Dia</td>
+                                                        <td class="p-1">Titulo</td>
+                                                        <td class="p-1">Horário</td>
+                                                        <td class="p-1">Professor</td>
+                                                        <td class="p-1"></td>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    @foreach(\App\AulaModel::all()->where('id_turma', $dado->id) as $aula)
+                                                    <tr>
+                                                        <td class="p-2">{{$aula->dia_semana}}</td>
+                                                        <td class="p-2">{{$aula->titulo}}</td>
+                                                        <td class="p-2">{{$aula->hora_inicio_fim}}</td>
+                                                        <td class="p-2">{{$aula->professor}}</td>
+                                                        <td class="p-2">
+                                                            <form action="{{route('aula.destroy', $aula->id)}}" method="post">
+                                                                @csrf
+                                                                <input name="_method" value="delete" type="hidden">
+                                                                <button  class="btn-sm btn-danger p-1 m-1 pl-2 pr-2"><i class="fas fa-fw fa-trash"></i></button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                    @endforeach
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
@@ -122,7 +119,7 @@
 
                         <div class="col-6">
                             <div class="card shadow bg-white rounded">
-                                <div class="card-header">Alunos da Turma</div>
+                                <div class="card-header bg-primary text-white">Alunos da Turma</div>
                                 <div class="card-body">
                                     <form action="{{route('inseriremturma')}}" method="post">
                                         @csrf
@@ -140,7 +137,7 @@
                                                </select>
                                            </div>
                                            <div class="col-2">
-                                               <button type="submit" class="btn btn-success w-100">+</button>
+                                               <button type="submit" class="btn btn-success w-100"><i class="fa fa-save"></i></button>
                                            </div>
                                        </div>
                                     </form>
@@ -148,12 +145,12 @@
                                         <tbody style="font-size: 14px">
                                         @foreach(\App\AlunosModel::all()->where('turma', $dado->id) as $aluno)
                                             <tr>
-                                                <td>
+                                                <td class="p-1">
                                                     <span class="text-primary" style="font-size: 16px">{{$aluno->nome}}</span><br>
                                                     {{$aluno->email}}
                                                 </td>
                                                 <td>
-                                                    <a  class="btn btn-sm btn-danger w-100" href="{{route('removerdaturma', $aluno->id)}}">x</a>
+                                                    <a  class="btn btn-sm btn-danger" href="{{route('removerdaturma', $aluno->id)}}"><i class="fa fa-trash"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -168,7 +165,7 @@
 
                         <div class="col-6">
                             <div class="card shadow bg-white rounded">
-                                <div class="card-header">Exercícios da Turma</div>
+                                <div class="card-header bg-primary text-white">Exercícios da Turma</div>
                                 <div class="card-body">
                                     <form action="{{route('inserirexercicioemturma')}}" method="post">
                                         @csrf
@@ -191,7 +188,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-2">
-                                                <button type="submit" class="btn btn-success w-100">+</button>
+                                                <button type="submit" class="btn btn-success w-100"><i class="fa fa-save"></i></button>
                                             </div>
                                         </div>
                                     </form>
@@ -202,12 +199,12 @@
                                                 @if($one->id == $exercicio->id_exercicio)
 
                                                     <tr>
-                                                        <td>
-                                                            <span class="text-primary" style="font-size: 16px">{{$one->titulo}}</span><br>
-                                                            {{$one->profesor}}
+                                                        <td class="p-1">
+                                                            <span class="text-primary m-0 p-0" style="font-size: 16px">{{$one->titulo}}</span><br>
+                                                            <span class="m-0 p-0" style="font-size: 12px">{{$one->descricao}}</span>
                                                         </td>
-                                                        <td>
-                                                            <a  class="btn btn-sm btn-danger w-100" href="{{route('removerexerciciodaturma', $exercicio->id)}}">x</a>
+                                                        <td align="center" class="p-2">
+                                                            <a  class="btn btn-sm btn-danger" href="{{route('removerexerciciodaturma', $exercicio->id)}}"><i class="fa fa-trash"></i></a>
                                                         </td>
                                                     </tr>
                                                 @endif

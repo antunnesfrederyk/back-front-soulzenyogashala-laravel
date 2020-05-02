@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\AulaModel;
 use Illuminate\Http\Request;
 
-class AulaController extends Controller
+class FrontAulaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -30,11 +31,15 @@ class AulaController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        //
+        $aula = new AulaModel($request->all());
+        $tm = $aula->id_turma;
+        $aula->save();
+        flash('Aula adicionada com sucesso!')->success();
+        return redirect()->route('turma.show', $tm);
     }
 
     /**
@@ -75,10 +80,14 @@ class AulaController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        //
+        $aula = AulaModel::findOrFail($id);
+        $tm = $aula->id_turma;
+        $aula->delete();
+        flash('Aula Excluída')->success();
+        return redirect()->route('turma.show', $tm);
     }
 }
