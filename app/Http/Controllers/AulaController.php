@@ -2,20 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\TurmaModel;
 use Illuminate\Http\Request;
 
-class FrontTurmaController extends Controller
+class AulaController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $dados = TurmaModel::all();
-        return view('admin.turmas.list', compact('dados'));
+        //
     }
 
     /**
@@ -32,14 +30,11 @@ class FrontTurmaController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $turma = new TurmaModel($request->all());
-        $turma->save();
-        flash('Turma Cadastrada');
-        return redirect()->route('turma.index');
+        //
     }
 
     /**
@@ -80,13 +75,10 @@ class FrontTurmaController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $dado = TurmaModel::findOrFail($id);
-        $dado->delete();
-        flash('Turma excluída com sucesso!')->success();
-        return redirect()->route('turma.index');
+        //
     }
 }

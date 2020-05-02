@@ -25,8 +25,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource("alunos", "FrontAlunoController");
     Route::resource("anamneses", "FrontAnamneseController");
     Route::resource("post", "FrontPostController");
-    Route::resource("turmas", "FrontTurmaController");
-    Route::resource("exercicios", "FrontExerciciosController");
+    Route::resource("turma", "FrontTurmaController");
+    Route::resource("exercicio", "FrontExerciciosController");
     Route::post('inseriremturma', 'FrontOperacoesController@inseriremturma')->name('inseriremturma');
     Route::get('removerdaturma/{id}', 'FrontOperacoesController@removerdaturma')->name('removerdaturma');
 });

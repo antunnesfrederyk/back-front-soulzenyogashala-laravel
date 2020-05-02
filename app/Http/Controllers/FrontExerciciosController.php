@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ExercicioModel;
 use Illuminate\Http\Request;
 
 class FrontExerciciosController extends Controller
@@ -9,11 +10,12 @@ class FrontExerciciosController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        //
+        $dados = ExercicioModel::all();
+        return view('admin.exercicios.list', compact('dados'));
     }
 
     /**
@@ -30,11 +32,34 @@ class FrontExerciciosController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        //
+        $exercicio = new ExercicioModel();
+        $exercicio->titulo = $request['titulo'];
+        $exercicio->descricao = $request['descricao'];
+        $exercicio->id_user = $request['id_user'];
+        $exercicio->audio_video = $request['audio_video'];
+        $exercicio->duracao = $request['duracao'];
+
+        if($request['gratuito']){
+            $exercicio->gratuito = true;
+        }else{
+            $exercicio->gratuito = false;
+        }
+
+
+        $file = $request->file('imagem');
+        if ($file !=null){
+            $newName = str_replace('.'.$file->getClientOriginalExtension() , '' , strtolower( preg_replace('/[ -]+/' , '_' , strtr(utf8_decode(trim($file->getClientOriginalName())), utf8_decode("áàãâéêíóôõúüñçÁÀÃÂÉÊÍÓÔÕÚÜÑÇ"), "aaaaeeiooouuncAAAAEEIOOOUUNC-")) )).'_'.uniqid().'.'.$file->getClientOriginalExtension();
+            $file->move(public_path('exercicios'), $newName);
+            $exercicio->imagem = "exercicios/".$newName;
+        }
+
+        $exercicio->save();
+        flash('Post inserido com sucesso!')->success();
+        return redirect()->route('exercicio.index');
     }
 
     /**
@@ -75,10 +100,13 @@ class FrontExerciciosController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        //
+        $exercicio = ExercicioModel::findOrFail($id);
+        $exercicio->delete();
+        flash('Exercício Excluído com Sucesso')->success();
+        return  redirect()->route('exercicio.index');
     }
 }

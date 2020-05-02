@@ -15,12 +15,12 @@ class CreateExercicioTable extends Migration
     {
         Schema::create('exercicios', function (Blueprint $table) {
             $table->id();
-            $table->string('audio')->nullable();
+            $table->string('audio_video')->nullable();
             $table->string('descricao')->nullable();
             $table->string('duracao')->nullable();
             $table->string('imagem')->nullable();
             $table->string('titulo')->nullable();
-            $table->boolean('is_free')->default(false);
+            $table->boolean('gratuito')->default(false);
             $table->bigInteger('id_user')->unsigned();
             $table->foreign('id_user')->references('id')->on('users')->cascadeOnDelete();
             $table->timestamps();

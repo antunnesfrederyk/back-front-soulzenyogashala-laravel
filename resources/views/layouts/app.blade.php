@@ -110,7 +110,7 @@
             <div id="collapseUtilities3" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Menu de Exercícios:</h6>
-                    <a class="collapse-item">Listar Exercícios</a>
+                    <a class="collapse-item" href="{{route('exercicio.index')}}">Listar Exercícios</a>
                 </div>
             </div>
         </li>
@@ -128,7 +128,7 @@
         <!-- Nav Item - Tables -->
 
         <li class="nav-item">
-            <a class="nav-link disabled" href="{{route('turmas.index')}}">
+            <a class="nav-link" href="{{route('turma.index')}}">
                 <i class="fas fa-layer-group"></i>
                 <span>Turmas</span></a>
         </li>

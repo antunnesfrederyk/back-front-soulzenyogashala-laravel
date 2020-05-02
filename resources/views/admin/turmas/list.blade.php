@@ -14,7 +14,7 @@
                 <div class="collapse" id="collapseCardExample">
                     <div class="card-body p-4">
 
-                        <form method="post" action="{{route('turmas.store')}}" enctype="multipart/form-data">
+                        <form method="post" action="{{route('turma.store')}}" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="id_user" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
                             <input type="hidden" name="codigodeacesso" value="{{ uniqid() }}">
@@ -73,7 +73,7 @@
                                         <a class="btn btn-primary" href="#">Administrar Turma</a>
                                     </td>
                                     <td align="center">
-                                        <form action="{{route('turmas.destroy', $dado->id)}}" method="post">
+                                        <form action="{{route('turma.destroy', $dado->id)}}" method="post">
                                             @csrf
                                             <input name="_method" value="delete" type="hidden">
                                             <button  class="btn btn btn-danger"><i class="fas fa-fw fa-trash"></i></button>
