@@ -21,7 +21,7 @@
 
 <body class="bg-gradient-primary">
 
-<div class="container">
+<div class="container pt-5">
     <!-- Outer Row -->
     <div class="row justify-content-center">
         <div class="col-xl-10 col-lg-12 col-md-9">
@@ -67,6 +67,9 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div align="center">
+        <span class="text-white">Copyright &copy; Soul Zen Yoga Shala 2020</span>
     </div>
 
 </div>

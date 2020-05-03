@@ -21,7 +21,9 @@ class ApiAuthAlunoController extends Controller
      * @return AlunosModel[]|\Illuminate\Database\Eloquent\Collection
      */
     public function autenticar($email, $senha){
-        return AlunosModel::all()->where('email', $email)->where('senha', $senha);
+        $list = [];
+        array_push($list, AlunosModel::all()->where('email', $email)->where('senha', $senha)->first());
+        return $list;
     }
 
     public function proximoseventos(){
@@ -29,8 +31,8 @@ class ApiAuthAlunoController extends Controller
     }
 
     public function entrarnaturma($idaluno, $codigodeacesso){
-        $turma = TurmaModel::all()->where('codigodeacesso', $codigodeacesso)->get(0);
-        $aluno = AlunosModel::all()->where('id', $idaluno)->get(0);
+        $turma = TurmaModel::all()->where('codigodeacesso', $codigodeacesso)->first();
+        $aluno = AlunosModel::all()->where('id', $idaluno)->first();
         $aluno->turma = $turma->id;
         $aluno->save();
         return $turma;

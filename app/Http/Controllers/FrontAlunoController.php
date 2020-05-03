@@ -86,6 +86,6 @@ class FrontAlunoController extends Controller
         $aluno->delete();
 //        flash()->overlay('Excluído', 'O Usuário foi excluído com sucesso');
         flash('Usuário excluído com sucesso!')->success();
-        return redirect()->route('alunos.index');
+        return redirect()->route('aluno.index');
     }
 }
