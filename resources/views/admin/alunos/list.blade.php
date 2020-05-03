@@ -54,10 +54,11 @@
                                         @endif
                                     </td>
                                     <td align="center">
+                                        <a  class="btn btn btn-success mb-1" href="{{route('financeiro.show', $dado->id)}}">Financeiro</a>
                                         <form action="{{route('aluno.destroy', $dado->id)}}" method="post">
                                             @csrf
                                             <input name="_method" value="delete" type="hidden">
-                                            <button  class="btn btn btn-danger"><i class="fas fa-fw fa-trash"></i></button>
+                                            <button  class="btn btn btn-danger btn-sm"><i class="fas fa-fw fa-trash"></i> Excluir</button>
                                         </form>
                                     </td>
                                 </tr>
