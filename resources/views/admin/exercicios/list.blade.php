@@ -31,8 +31,8 @@
                                     <textarea class="form-control" rows="3" name="descricao"></textarea>
                                 </div>
                                 <div class="form-group col-md-6 col-12">
-                                    <label class="mb-0">URL Audio/Vide:</label>
-                                    <input class="form-control" type="url" name="audio_video" placeholder="">
+                                    <label class="mb-0">URL Youtube:</label>
+                                    <input class="form-control" type="text" name="audio_video" placeholder="Ex: IRirqw082XI">
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                     <label class="mb-0">Duração do Exercício</label>

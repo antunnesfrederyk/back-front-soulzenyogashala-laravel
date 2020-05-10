@@ -26,6 +26,7 @@ class CreateAlunosTable extends Migration
             $table->integer('turma')->nullable();
             $table->date('dataprimeiraaula')->nullable();
             $table->date('nascimento')->nullable();
+            $table->string('foto')->default("");
             $table->timestamps();
         });
     }

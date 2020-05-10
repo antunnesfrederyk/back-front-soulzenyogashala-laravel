@@ -18,6 +18,7 @@ Route::resource("agendas", "ApiAgendaController");
 Route::resource("alunos", "ApiAlunoController");
 Route::resource("anamneses", "ApiAnamneseController");
 Route::resource("posts", "ApiPostController");
+Route::resource("aulas", "ApiAulasController");
 Route::resource("turmas", "ApiTurmaController");
 Route::resource("exercicios", "ApiExerciciosController");
 

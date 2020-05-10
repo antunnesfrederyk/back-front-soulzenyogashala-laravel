@@ -16,7 +16,7 @@ class CreateExercicioTable extends Migration
         Schema::create('exercicios', function (Blueprint $table) {
             $table->id();
             $table->string('audio_video')->nullable();
-            $table->string('descricao')->nullable();
+            $table->text('descricao')->nullable();
             $table->string('duracao')->nullable();
             $table->string('imagem')->nullable();
             $table->string('titulo')->nullable();

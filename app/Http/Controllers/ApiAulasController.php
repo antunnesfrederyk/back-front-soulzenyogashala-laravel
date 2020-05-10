@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\AulaModel;
 use App\ExercicioModel;
-use App\ExercicioTurmaModel;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class ApiExerciciosController extends Controller
+class ApiAulasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,7 @@ class ApiExerciciosController extends Controller
      */
     public function index()
     {
-        return ExercicioModel::all();
+        //
     }
 
     /**
@@ -37,31 +36,18 @@ class ApiExerciciosController extends Controller
      */
     public function store(Request $request)
     {
-        $exercicio = new ExercicioModel($request->all());
-        $exercicio->save();
-        return $exercicio;
+        //
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Support\Collection
+     * @return AulaModel[]|\Illuminate\Database\Eloquent\Collection
      */
     public function show($id)
     {
-        if($id==0){
-            return ExercicioModel::all()->where('gratuito', 1)->values();
-        }else{
-            $dados =  DB::table('exercicios')
-                ->join('exercicio_turma', 'exercicios.id', '=', 'exercicio_turma.id_exercicio')
-                ->where('exercicio_turma.id_turma', $id)
-                ->select("exercicios.id", 'exercicios.audio_video', 'exercicios.descricao', 'exercicios.duracao', 'exercicios.imagem', 'exercicios.titulo', 'exercicios.gratuito', 'exercicios.id_user', 'exercicios.created_at', 'exercicios.updated_at')
-                ->get();
-
-            return $dados;
-
-        }
+        return AulaModel::all()->where('id_turma', $id)->values();
     }
 
     /**
@@ -84,9 +70,7 @@ class ApiExerciciosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $exercicio = ExercicioModel::findOrFail($id);
-        $exercicio->update($request->all());
-        return $exercicio;
+        //
     }
 
     /**
@@ -97,7 +81,6 @@ class ApiExerciciosController extends Controller
      */
     public function destroy($id)
     {
-        $exercicio = ExercicioModel::findOrFail($id);
-        $exercicio->delete();
+        //
     }
 }

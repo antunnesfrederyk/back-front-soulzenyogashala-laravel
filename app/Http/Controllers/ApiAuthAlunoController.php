@@ -27,7 +27,7 @@ class ApiAuthAlunoController extends Controller
     }
 
     public function proximoseventos(){
-        return AgendaModel::all()->where('data', '>=', Carbon::now());
+        return AgendaModel::all()->where('data', '>=', Carbon::now())->values();
     }
 
     public function entrarnaturma($idaluno, $codigodeacesso){
