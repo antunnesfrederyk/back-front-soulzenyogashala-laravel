@@ -21,6 +21,7 @@ Route::resource("posts", "ApiPostController");
 Route::resource("aulas", "ApiAulasController");
 Route::resource("turmas", "ApiTurmaController");
 Route::resource("exercicios", "ApiExerciciosController");
+Route::resource("financeiros", "ApiFinanceiroController");
 
 Route::get("autenticar/{email}/{senha}", "ApiAuthAlunoController@autenticar");
 Route::get("proximoseventos", "ApiAuthAlunoController@proximoseventos");
