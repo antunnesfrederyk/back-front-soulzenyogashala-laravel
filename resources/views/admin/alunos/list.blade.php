@@ -34,7 +34,8 @@
                             <tbody>
                             @foreach($dados as $dado)
                                 <tr>
-                                    <td><span class="text-primary">{{$dado->nome}}</span><br><span style="font-size: 14px;">{{$dado->email}}<br>{{\Carbon\Carbon::parse($dado->nascimento)->format('d/m/Y')}}</span></td>
+                                    <td><span class="text-primary">{{$dado->nome}}</span><br><span style="font-size: 14px;">{{$dado->email}}<br>{{\Carbon\Carbon::parse($dado->nascimento)->format('d/m/Y')}}</span>
+                                    </td>
                                     <td>{{$dado->endereco}}, {{$dado->bairro}}<br>{{$dado->cidade}} - {{$dado->cep}}</td>
                                     <td>{{$dado->telefone}}</td>
                                     <td align="center">
@@ -54,11 +55,12 @@
                                         @endif
                                     </td>
                                     <td align="center">
-                                        <a  class="btn btn btn-success mb-1" href="{{route('financeiro.show', $dado->id)}}">Financeiro</a>
+                                        <a  class="text-success" href="{{route('financeiro.show', $dado->id)}}">Financeiro</a>
+                                        <a href="{{route('redefinirsenha', $dado->id)}}"  class="text-warning" style="white-space: nowrap">Redefinir Senha</a>
                                         <form action="{{route('aluno.destroy', $dado->id)}}" method="post">
                                             @csrf
                                             <input name="_method" value="delete" type="hidden">
-                                            <button  class="btn btn btn-danger btn-sm"><i class="fas fa-fw fa-trash"></i> Excluir</button>
+                                            <button  class="btn btn btn-danger btn-sm">Excluir Aluno</button>
                                         </form>
                                     </td>
                                 </tr>

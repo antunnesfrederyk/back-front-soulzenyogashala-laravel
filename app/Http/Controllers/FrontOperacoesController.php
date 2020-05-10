@@ -48,4 +48,14 @@ class FrontOperacoesController extends Controller
     }
 
 
+    public function redefinirsenha($id){
+        $aluno = AlunosModel::findOrFail($id);
+        $nome = $aluno->nome;
+        $novaSenha = uniqid();
+        $aluno->senha = md5($novaSenha);
+        $aluno->save();
+        flash("Senha de $nome Redefinida, nova senha é: $novaSenha")->important();
+        return redirect()->route('aluno.index');
+    }
+
 }

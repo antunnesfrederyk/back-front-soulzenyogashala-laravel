@@ -33,4 +33,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('removerdaturma/{id}', 'FrontOperacoesController@removerdaturma')->name('removerdaturma');
     Route::post('inserirexercicioemturma', 'FrontOperacoesController@inserirexercicioemturma')->name('inserirexercicioemturma');
     Route::get('removerexerciciodaturma/{id}', 'FrontOperacoesController@removerexerciciodaturma')->name('removerexerciciodaturma');
+    Route::get('redefinirsenha/{id}', 'FrontOperacoesController@redefinirsenha')->name('redefinirsenha');
 });
