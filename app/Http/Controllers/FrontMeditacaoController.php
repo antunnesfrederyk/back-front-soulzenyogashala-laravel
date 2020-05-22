@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\ExercicioModel;
+use App\MeditacaoModel;
 use Illuminate\Http\Request;
 
-class FrontExerciciosController extends Controller
+class FrontMeditacaoController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $dados = ExercicioModel::all();
-        return view('admin.exercicios.list', compact('dados'));
+        $dados = MeditacaoModel::all();
+        return view('admin.meditacao.list', compact('dados'));
     }
 
     /**
@@ -32,34 +32,25 @@ class FrontExerciciosController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $exercicio = new ExercicioModel();
-        $exercicio->titulo = $request['titulo'];
-        $exercicio->descricao = $request['descricao'];
-        $exercicio->id_user = $request['id_user'];
-        $exercicio->audio_video = $request['audio_video'];
-        $exercicio->duracao = $request['duracao'];
 
-        if($request['gratuito']){
-            $exercicio->gratuito = true;
-        }else{
-            $exercicio->gratuito = false;
-        }
+        $meditacao = new MeditacaoModel();
+        $meditacao->nome = $request['nome'];
+        $meditacao->categoria = $request['categoria'];
 
-
-        $file = $request->file('imagem');
+        $file = $request->file('audio');
         if ($file !=null){
             $newName = str_replace('.'.$file->getClientOriginalExtension() , '' , strtolower( preg_replace('/[ -]+/' , '_' , strtr(utf8_decode(trim($file->getClientOriginalName())), utf8_decode("áàãâéêíóôõúüñçÁÀÃÂÉÊÍÓÔÕÚÜÑÇ"), "aaaaeeiooouuncAAAAEEIOOOUUNC-")) )).'_'.uniqid().'.'.$file->getClientOriginalExtension();
-            $file->move(public_path('exercicios'), $newName);
-            $exercicio->imagem = "exercicios/".$newName;
+            $file->move(public_path('meditacao'), $newName);
+            $meditacao->audio = "meditacao/".$newName;
         }
 
-        $exercicio->save();
-        flash('Post inserido com sucesso!')->success();
-        return redirect()->route('exercicio.index');
+        $meditacao->save();
+        flash('Upload realizado com sucesso!')->success();
+        return redirect()->route('meditacoes.index');
     }
 
     /**
@@ -100,16 +91,16 @@ class FrontExerciciosController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $exercicio = ExercicioModel::findOrFail($id);
-        if(file_exists($exercicio->imagem)){
-            unlink($exercicio->imagem);
+        $delete = MeditacaoModel::findOrFail($id);
+        if(file_exists($delete->audio)){
+            unlink($delete->audio);
         }
-        $exercicio->delete();
-        flash('Exercício Excluído com Sucesso')->success();
-        return  redirect()->route('exercicio.index');
+        $delete->delete();
+        flash('Meditação excluída!')->success();
+        return redirect()->route('meditacoes.index');
     }
 }

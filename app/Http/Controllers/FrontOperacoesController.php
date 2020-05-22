@@ -6,6 +6,7 @@ use App\AlunosModel;
 use App\AlunoTurmaModel;
 use App\ExercicioModel;
 use App\ExercicioTurmaModel;
+use App\MeditacaoModel;
 use Illuminate\Http\Request;
 
 class FrontOperacoesController extends Controller
@@ -56,6 +57,11 @@ class FrontOperacoesController extends Controller
         $aluno->save();
         flash("Senha de $nome Redefinida, nova senha é: $novaSenha")->important();
         return redirect()->route('aluno.index');
+    }
+
+    public function meditacao($id){
+        $url = MeditacaoModel::orderByRaw('RAND()')->where("categoria", $id)->take(1)->first();
+        return view("meditacao", compact('url'));
     }
 
 }

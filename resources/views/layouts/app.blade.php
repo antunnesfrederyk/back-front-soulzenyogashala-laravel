@@ -115,6 +115,12 @@
         <!-- Nav Item - Tables -->
 
         <li class="nav-item">
+            <a class="nav-link" href="{{route('meditacoes.index')}}">
+                <i class="fas fa-spa"></i>
+                <span>Meditação</span></a>
+        </li>
+
+        <li class="nav-item">
             <a class="nav-link" href="{{route('turma.index')}}">
                 <i class="fas fa-layer-group"></i>
                 <span>Turmas</span></a>

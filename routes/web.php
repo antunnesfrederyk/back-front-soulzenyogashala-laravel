@@ -17,6 +17,8 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
+Route::get('meditacao/{id}', "FrontOperacoesController@meditacao");
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -28,6 +30,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource("turma", "FrontTurmaController");
     Route::resource("aula", "FrontAulaController");
     Route::resource("financeiro", "FrontFinanceiroController");
+    Route::resource("meditacoes", "FrontMeditacaoController");
     Route::resource("exercicio", "FrontExerciciosController");
     Route::post('inseriremturma', 'FrontOperacoesController@inseriremturma')->name('inseriremturma');
     Route::get('removerdaturma/{id}', 'FrontOperacoesController@removerdaturma')->name('removerdaturma');
