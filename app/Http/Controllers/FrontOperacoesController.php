@@ -60,8 +60,8 @@ class FrontOperacoesController extends Controller
     }
 
     public function meditacao($id){
-        $url = MeditacaoModel::orderByRaw('RAND()')->where("categoria", $id)->take(1)->first();
-        return view("meditacao", compact('url'));
+        $url = MeditacaoModel::where("categoria", $id)->orderByRaw('RAND()')->take(1)->first();
+            return view("meditacao", compact('url'));
     }
 
 }

@@ -52,4 +52,28 @@ class ApiAuthAlunoController extends Controller
     public function exerciciosporturma($idturma){
         return ExercicioTurmaModel::all()->where('id_turma', $idturma);
     }
+
+    public function uploadfoto(Request $request){
+        $id = $request['id'];
+        $newName = $request['name'];
+        $imagem = $request['imagem'];
+        $file = base64_decode($imagem);
+        if ($file !=null){
+            $file->move(public_path('profile'), $newName);
+            $aluno = AlunosModel::findOrFail($id);
+            $aluno->foto = "profile/".$newName;
+            $aluno->save();
+            return "profile/".$newName;
+        }
+        return "erro";
+    }
+
+    public function alterarfoto($id, $foto){
+        $aluno = AlunosModel::findOrFail($id);
+        $aluno->foto = "images/".$foto;
+        $aluno->save();
+        $alun = AlunosModel::all()->where('id', $id)->values();
+        return $alun;
+
+    }
 }

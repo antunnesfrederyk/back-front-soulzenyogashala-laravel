@@ -28,7 +28,8 @@ Route::get("entrarnaturma/{idaluno}/{codigodeacesso}", "ApiAuthAlunoController@e
 Route::get("sairdaturma/{idaluno}", "ApiAuthAlunoController@sairdaturma");
 Route::get("listaralunosdaturma/{idturma}", "ApiAuthAlunoController@listaralunosTurma");
 Route::get("exerciciosporturma/{idturma}", "ApiAuthAlunoController@exerciciosporturma");
-
+Route::post("upload", "ApiAuthAlunoController@uploadfoto");
+Route::get("foto/{id}/{foto}", "ApiAuthAlunoController@alterarfoto");
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

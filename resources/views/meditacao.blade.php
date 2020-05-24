@@ -60,7 +60,7 @@
                             </p>
                             <p id="p">Clique para iniciar</p>
                             <br>
-                            <audio id="player_html5" src="https://adminsoulzenyoga1.websiteseguro.com/{{$url->audio}}">Seu navegador não tem suporte a HTML5</audio>
+                            <audio id="player_html5" src="{{asset($url->audio)}}">Seu navegador não tem suporte a HTML5</audio>
                             <button class="btn btn-info btn-lg btn-circle" style="height: 100px; width: 100px" onclick="document.getElementById('player_html5').play();"><i class="fa fa-play"></i>
                             </button>
                         </div>
